@@ -31,3 +31,6 @@ if __name__=='__main__':
     access_token = twitter.obtain_access_token()
     twitter = Twython(app_key=APP_KEY, access_token=access_token)
     followers = concatenate_ids([followers for followers in generate_followers('neuroconscience', APP_KEY, access_token)])
+
+
+# %%
