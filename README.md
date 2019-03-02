@@ -1,45 +1,37 @@
-IMPORTANT TERM & STEPS
+# Twitter Ego-Network
 
-We will use git/github and Python & R to make this analysis reproducible.
+* Setup  of Twitter credentials (developer acount): login to your twitter account and  to http://apps.twitter.com/
+* more about limitations https://dev.twitter.com/rest/public/rate-limiting
+* We will put scripts and notebooks to make this analysis reproducible
+* We are using Pytjon and Tweepy to run analysis
+## What actually makes a tweet?
+* text content
+* entites (user mentions, hashtags, URLs, and media) and places
 
-* What actually makes a tweet?
-##  Interacting with the Twitter API
-Login to your twitter account and  to http://apps.twitter.com/
-Consumer Key  and Consumer Secret  is for your app
-(called API Key and API Secret, respectively). Acces Token is for your account
-
-
-https://dev.twitter.com/rest/public/rate-limiting
-
- * REST API and STREAM API
- (published  tweets - we go back in time, search for specific user acces your timeline)
-
- and upcoming tweets -  we  go forward in time, keyword and downalad a massive amount of tweets about life
-events
-# Install Tweepy (or any other python library)
-* Hashtags and user mentions in tweets
-
-
-# Getting started
+## Getting started
 
 Create config.py file where you will store your App keys
 Create .gitignore file and include config.py file there
 
-# Simple Visualization of the data
+## Simple Visualization of the data
 
 Visualization.ipynb in code/ invokes a simple scatter plot based on the number of shared followers.
 It uses [Uniform Manifold Approximation and Projection](https://github.com/lmcinnes/umap) for dimensionality reduction.
 You can play with the parameters and see what they do.
 
-# Example jupyter notebook
+## Example jupyter notebook
 
 * https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
 * https://github.com/bonzanini/Book-SocialMediaMiningPython
 
-# Datasets
+## Datasets
 * NIPS circles http://snap.stanford.edu/data/egonets-Twitter.html
 * HIGGS discovery http://snap.stanford.edu/data/higgs/web/twitter-higgs.html
 
 
-# Example apps
+## Example apps
 https://www.proporti.onl/
+
+
+## Task for tomorrow:
+*  Daniel: prepare data from json to  gephi matrix
