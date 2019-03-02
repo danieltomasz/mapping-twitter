@@ -21,3 +21,6 @@ events
 
 
 Getting started
+
+Create config.py file where you will store your App keys
+Create .gitignore file and include config.py file there
