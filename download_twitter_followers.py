@@ -16,7 +16,7 @@ def download_followers(user, api):
 
 def get_screen_names_of_followers(user, api):
     '''Returns a list of screen names for user given tweepy api'''
-    return [api.get_user(int(user_id)).screen_name for user_id in download_followers(username, api)]
+    return [api.get_user(int(user_id)).screen_name for user_id in download_followers(user, api)]
 
 
 def get_followers_of_followers(user, api):
