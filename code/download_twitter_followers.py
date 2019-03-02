@@ -59,7 +59,7 @@ if __name__ == '__main__':
     #        user_followers[username] = get_followers_of_followers(username, main_api)
     #    with open('saved_followers.json', 'w+') as fl:
     #        json.dump(user_followers, fl)
-    which_to_scrape_lists = [['CUBRICcardiff', 'mikolaj_pawlak', 'Ke20', 'NetworkTremieu1', 'mkachlicka', 'BHDonostia', 'nexus_neuro', 'mBrainTrain', 'karolaam96'], ['CrookRumsey', 'BorkiewiczPola', 'neurabenn', 'hanianow', 'yadwink'], [ 'BlmzRina', 'AlfredAnwander', 'sandracbl', 'nikaradziun', 'marekPedziwi'], ['TrojKac', 'AntoniJamio', 'pmigdal', 'SudoNeuroSci', 'MartynaPlomecka', 'anja_ries', 'cusacklab', 'k3lnmee']]
+    which_to_scrape_lists = ['Sc1naps', 'SharCrook', 'MargaretCondeE', 'milthampton', 'lucabrivio', 'BartoszKochask1', 'neoosho', 'R3RT0', 'rogue_neuron', 'SliwinskaM', 'PetitetPierre', 'katjaQheuer', 'vinpetersen', 'msandstr', 'Ronald_vanLoon', 'lisa_schmors', 'dan_marinazzo', 'KrzysztofBiels1']
     user_followers = {}
     for i_sublist, sublist in enumerate(which_to_scrape_lists):
         user_followers = {}
