@@ -1,6 +1,7 @@
 #adapted from https://stackoverflow.com/a/42390494
 import tweepy
 import numpy as np
+import json
 
 def download_followers(user, api):
     all_followers = []
@@ -10,6 +11,30 @@ def download_followers(user, api):
         return all_followers
     except tweepy.TweepError:
         print('Could not access user {}. Skipping...'.format(user))
+
+
+def get_screen_names_of_followers(user, api):
+    '''Returns a list of screen names for user given tweepy api'''
+    return [api.get_user(int(user_id)).screen_name for user_id in download_followers(username, api)]
+
+
+def get_followers_of_followers(user, api):
+    '''Returns a dictionary with every follower of user as a key and the followers of this follower as values'''
+    followers_of_user = get_screen_names_of_followers(user, api)
+    followers_of_followers = {follower: get_screen_names_of_followers(follower, api)
+                             for follower in followers_of_user}
+    return followers_of_followers
+
+
+def compute_sparse_matrix_of_followers(follower_dict):
+    '''Computes a scipy sparse matrix for follower dict with as many rows as there are keys in follower_dict (indicating the number of users)
+       and as many columns as there are unique followers in the values of follower_dict.
+       This matrix indicates if a user has this screen_name as a follower.
+       OUT:
+           '''
+       from sklearn.feature_extraction.text import CountVectorizer
+       cvectorizer = CoundVectorizer()
+
 
 # Include your keys below:
 consumer_key = ''
@@ -22,8 +47,11 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 main_api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-# this should be a list of twitter handles
-brainhack_twitter_users = ['mjoboos']
-user_followers = {}
-for username in brainhack_twitter_users:
-    user_followers[username] = [main_api.get_user(int(user_id)).screen_name for user_id in download_followers(username, main_api)]
+if __name__=='__main__':
+    # this should be a list of twitter handles
+    which_to_scrape = ['BrainhackW']
+    user_followers = {}
+    for username in which_to_scrape:
+        user_followers[username] = get_followers_of_followers(username, main_api)
+    with open('saved_followers.json', 'w+') as fl:
+        json.dump(user_followers, fl)
