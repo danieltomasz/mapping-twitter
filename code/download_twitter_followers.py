@@ -4,6 +4,10 @@ import json
 
 # adapted from https://stackoverflow.com/a/42390494
 
+def get_id_from_user_screennames(user_list, api):
+    '''Returns list of ids for list of user screen names'''
+    return [api.get_user(user).id for user in user_list]
+
 def download_followers(user, api):
     all_followers = []
     try:
