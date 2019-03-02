@@ -4,12 +4,12 @@ import json
 
 # adapted from https://stackoverflow.com/a/42390494
 
-
 def download_followers(user, api):
     all_followers = []
     try:
-        for page in tweepy.Cursor(api.followers, screen_name=user).pages():
-            all_followers.extend(map(str, [p.screen_name for p in page]))
+        for page in tweepy.Cursor(api.followers_ids, screen_name=user).pages():
+            all_followers.extend(page)
+#            all_followers.extend([api.get_user(user_id).screen_name for user_id in page])
         return all_followers
     except tweepy.TweepError:
         print('Could not access user {}. Skipping...'.format(user))
@@ -59,12 +59,12 @@ if __name__ == '__main__':
     #        user_followers[username] = get_followers_of_followers(username, main_api)
     #    with open('saved_followers.json', 'w+') as fl:
     #        json.dump(user_followers, fl)
-    which_to_scrape_lists = [['Olgierd46353783', 'pravish_sainath', 'davidepoggiali', 'RamkiranShukti'], ['CUBRICcardiff', 'mikolaj_pawlak', 'Ke20', 'NetworkTremieu1', 'mkachlicka', 'BHDonostia', 'nexus_neuro', 'mBrainTrain', 'karolaam96'], ['CrookRumsey', 'BorkiewiczPola', 'neurabenn', 'hanianow', 'yadwink'], [ 'BlmzRina', 'AlfredAnwander', 'sandracbl', 'nikaradziun', 'marekPedziwi'], ['TrojKac', 'AntoniJamio', 'pmigdal', 'SudoNeuroSci', 'MartynaPlomecka', 'anja_ries', 'cusacklab', 'k3lnmee']]
+    which_to_scrape_lists = [['CUBRICcardiff', 'mikolaj_pawlak', 'Ke20', 'NetworkTremieu1', 'mkachlicka', 'BHDonostia', 'nexus_neuro', 'mBrainTrain', 'karolaam96'], ['CrookRumsey', 'BorkiewiczPola', 'neurabenn', 'hanianow', 'yadwink'], [ 'BlmzRina', 'AlfredAnwander', 'sandracbl', 'nikaradziun', 'marekPedziwi'], ['TrojKac', 'AntoniJamio', 'pmigdal', 'SudoNeuroSci', 'MartynaPlomecka', 'anja_ries', 'cusacklab', 'k3lnmee']]
     user_followers = {}
     for i_sublist, sublist in enumerate(which_to_scrape_lists):
         user_followers = {}
         for user in sublist:
             user_followers[user] = download_followers(user, main_api)
-        with open('followers_part_{}.json'.format(i_sublist), 'w+') as fl:
+        with open('followers_part_{}.json'.format(i_sublist+1), 'w+') as fl:
             json.dump(user_followers, fl)
 
