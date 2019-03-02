@@ -28,3 +28,8 @@ Further direction for the analysis will depend on participants and the availabil
 * [shiny app in R which visualize spefic network given the term search](https://johncoene.shinyapps.io/chirp_demo/)
 * [ short intro to graphs by Piotr Migdal] he is leader of one of the projects too), inside example of gephi viz https://medium.com/@pmigdal/ba26fa415f29
 Sentiment Analysis https://towardsdatascience.com/welcome-to-the-forest-london-borough-of-culture-2019-twitter-analysis-9ea25cf4f033
+
+
+
+# Example jupyter notebook
+https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
