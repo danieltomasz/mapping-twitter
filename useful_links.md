@@ -33,3 +33,4 @@ Sentiment Analysis https://towardsdatascience.com/welcome-to-the-forest-london-b
 
 # Example jupyter notebook
 https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
+https://github.com/bonzanini/Book-SocialMediaMiningPython
