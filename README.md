@@ -16,8 +16,7 @@ https://dev.twitter.com/rest/public/rate-limiting
 
  and upcoming tweets -  we  go forward in time, keyword and downalad a massive amount of tweets about life
 events
-# Install Tweepy
-* ( we will use  Tweepy)
+# Install Tweepy (or any other python library)
 * Hashtags and user mentions in tweets
 
 
