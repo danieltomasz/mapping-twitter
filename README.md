@@ -32,6 +32,12 @@ You can play with the parameters and see what they do.
 ## Example apps
 https://www.proporti.onl/
 
+# Example analysis
+* https://perrystephenson.me/2018/09/29/the-r-twitter-network/
+* https://towardsdatascience.com/@shahamfarooq
+* https://towardsdatascience.com/information-flow-within-twitter-community-def9e939bb99
+* https://towardsdatascience.com/information-flow-within-twitter-community-def9e939bb99
+
 
 ## Task for tomorrow:
 *  Daniel: prepare data from json to  gephi matrix
