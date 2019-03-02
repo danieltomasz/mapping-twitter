@@ -1,33 +1,29 @@
-from twython import Twython
+#adapted from https://stackoverflow.com/a/42390494
+import tweepy
 import numpy as np
-import time
 
-def generate_followers(screen_name, app_key, access_token):
-    '''Given the screen name of the user generates (i.e. you can iterate over it) a list of all twitter API chunks'''
-    twitter = Twython(app_key=app_key, access_token=access_token)
-    next_cursor = 1
-    while next_cursor > 0:
-        try:
-            followers = twitter.get_followers_ids(screen_name=screen_name)
-            next_cursor = followers['next_cursor']
-        # this should be changed to the right exception
-        except Exception:
-            remainder = float(twitter.get_lastfunction_header(header='x-rate-limit-reset')) - time.time()
-            del twitter
-            print('Sleeping for {}'.format(remainder))
-            time.sleep(remainder)
-            twitter = Twython(app_key=app_key, access_token=access_token)
-            continue
-        yield followers
+def download_followers(user, api):
+    all_followers = []
+    try:
+        for page in tweepy.Cursor(api.followers_ids, screen_name=user).pages():
+            all_followers.extend(map(str, page))
+        return all_followers
+    except tweepy.TweepError:
+        print('Could not access user {}. Skipping...'.format(user))
 
-def concatenate_ids(list_of_id_dicts):
-    return np.concatenate([followers['ids'] for followers in list_of_id_dicts])
+# Include your keys below:
+consumer_key = ''
+consumer_secret = ''
+access_token = ''
+access_token_secret = ''
 
-APP_KEY = 'YOUR APP KEY'
-APP_SECRET = 'YOUR APP SECRET'
+# Set up tweepy API, with handling of rate limits
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+main_api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-if __name__=='__main__':
-    twitter = Twython(app_key=APP_KEY, app_secret=APP_SECRET, oauth_version=2)
-    access_token = twitter.obtain_access_token()
-    twitter = Twython(app_key=APP_KEY, access_token=access_token)
-    followers = concatenate_ids([followers for followers in generate_followers('neuroconscience', APP_KEY, access_token)])
+# this should be a list of twitter handles
+brainhack_twitter_users = ['danieltomasz']
+user_followers = {}
+for username in brainhack_twitter_users:
+    user_followers[username] = download_followers(username, main_api)
