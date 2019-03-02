@@ -12,6 +12,12 @@
 Create config.py file where you will store your App keys
 Create .gitignore file and include config.py file there
 
+# Simple Visualization of the data
+
+Visualization.ipynb in code/ invokes a simple scatter plot based on the number of shared followers.
+It uses [Uniform Manifold Approximation and Projection](https://github.com/lmcinnes/umap) for dimensionality reduction.
+You can play with the parameters and see what they do.
+
 # Example jupyter notebook
 
 * https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
