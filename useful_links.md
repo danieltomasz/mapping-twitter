@@ -32,5 +32,9 @@ Sentiment Analysis https://towardsdatascience.com/welcome-to-the-forest-london-b
 
 
 # Example jupyter notebook
-https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
-https://github.com/bonzanini/Book-SocialMediaMiningPython
+* https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
+* https://github.com/bonzanini/Book-SocialMediaMiningPython
+
+# Datasets
+* NIPS circles http://snap.stanford.edu/data/egonets-Twitter.html
+* HIGGS discovery http://snap.stanford.edu/data/higgs/web/twitter-higgs.html
