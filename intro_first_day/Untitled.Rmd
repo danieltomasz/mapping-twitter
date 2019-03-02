@@ -1,0 +1,51 @@
+---
+author: Daniel Borek
+address: '@danieltomasz'
+title:  Are you on twitter ?
+subtitle: Psychology as  a discipline seen through scientists online activity
+date: \today
+output: binb::presento
+---
+
+
+
+____
+
+\tikz[overlay,remember picture] \node[opacity=0.8, at=(current page.center)]{%
+  \includegraphics[height=\textheight]{images/WhyAcademicsUseTwitter.png}};
+\begin{textblock}{0}(5,3.5)
+  {\color{colorblue}\largetext{\textbf{PROCRASTINATION?}}}
+\end{textblock}
+
+##  
+
+- \begin{center}\largetext{The publication \underline{lifecycle}}\end{center}    \bigskip
+
+-  \montserratfont \textsc{Idea}	\bigskip
+-  \notosansfont  \textsc{Discussion} & \textsc{collaboration}		\bigskip
+-  \latolightfont Experimentation & data analysis         \bigskip
+-  \inconsolatafont Publication         \bigskip
+-  \textsc{Dissemination} & \textsc{outreach}    \bigskip
+
+
+## twitter as academic network
+
+\begin{center}\includegraphics[height=0.3\textheight]{images/twitter.png}\end{center}
+*  follow others (& be followed back) 	\bigskip 
+*  engage in conversations 	\bigskip
+*  ask questions	\bigskip
+*  have fun!	
+ 
+
+
+## Our project during brainhack 
+* Analyze and visualize network of  followers
+* \inconsolatafont (Python, R, Gephi..) \bigskip
+* \normalfont Followers to citation ration  \bigskip
+*  create and play  with datasets of scientific tweets \bigskip
+
+
+## Twitter datasets 
+*  Example: The Higgs tweets dataset: how the info of  \underline{discovery spread}\bigskip
+*  Idea: building datasets describing how debates about \montserratfont \underline{open science movement} \normalfont and  \montserratfont \underline{reproducibility crisis} \normalfont are represented on Twitter\bigskip
+*  Limited access to Twitter API, but we will  hack it :) 
