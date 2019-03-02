@@ -2,7 +2,8 @@ import tweepy
 import numpy as np
 import json
 
-#adapted from https://stackoverflow.com/a/42390494
+# adapted from https://stackoverflow.com/a/42390494
+
 
 def download_followers(user, api):
     all_followers = []
@@ -41,11 +42,7 @@ def compute_sparse_matrix_of_followers(follower_dict):
     return sparse_matrix, cvectorizer.vocabulary_
 
 
-# Include your keys below:
-consumer_key = ''
-consumer_secret = ''
-access_token = ''
-access_token_secret = ''
+from config import consumer_key, consumer_secret, access_token, access_token_secret
 
 # Set up tweepy API, with handling of rate limits
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -56,12 +53,12 @@ if __name__ == '__main__':
     # this should be a list of twitter handles
     # IF YOU WANT TO DOWNLOAD ALL FOLLOWERS OF THE FOLLOWERS OF THE BRAINHACK WARSAW ACCOUNT UNCOMMENT AND RUN
     # this takes some _time_
-#    which_to_scrape = ['BrainhackW']
-#    user_followers = {}
-#    for username in which_to_scrape:
-#        user_followers[username] = get_followers_of_followers(username, main_api)
-#    with open('saved_followers.json', 'w+') as fl:
-#        json.dump(user_followers, fl)
+    #    which_to_scrape = ['BrainhackW']
+    #    user_followers = {}
+    #    for username in which_to_scrape:
+    #        user_followers[username] = get_followers_of_followers(username, main_api)
+    #    with open('saved_followers.json', 'w+') as fl:
+    #        json.dump(user_followers, fl)
     which_to_scrape = ['danieltomasz']
     user_followers = {}
     for user in which_to_scrape:
