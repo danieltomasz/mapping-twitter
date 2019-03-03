@@ -1,2 +1,7 @@
 twitterconfig.py
-daniel_stuff/
+untracked/
+code/config.py
+.spyproject
+config.py
+__pychache__
+data/tweets_*.json

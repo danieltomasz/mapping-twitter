@@ -1,0 +1,36 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+Lets analyse Brainhack ego network
+
+```{r}
+library(tidyverse)
+library(rtweet)
+(my_followers <- get_followers("BrainhackW"))
+(my_friends <- get_friends("BrainhackW"))
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```{r}
+my_friends %>% 
+  select(user_id) %>% 
+  mutate(i_follow = TRUE) %>% 
+  full_join(my_followers %>% mutate(follows_me = TRUE), by = 'user_id') %>% 
+  mutate_all(funs(replace(., which(is.na(.)), FALSE))) %>% 
+  select(2:3) %>% table
+```
+
+```{r}
+all_users <- bind_rows(my_friends, my_followers) %>% 
+ distinct(user_id)
+length(all_users)
+```
+```{r}
+user_details <- lookup_users(all_users$user_id)
+```
+

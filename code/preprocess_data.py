@@ -1,5 +1,26 @@
 import json
 
+fields_to_keep = ['text', 'user', 'timestamp']
+
+def get_interesting_parts(tweet):
+    return {field: cont for field, cont in tweet.items() if field in fields_to_keep}
+
+def format_tweets(json_file):
+    '''Formats tweets from json_file into list that can be further used'''
+    with open(json_file, 'r') as fl:
+        content = json.load(fl)
+    filtered_content = [get_interesting_parts(tweet) for tweet in content]
+    return filtered_content
+
+def parse_mentions(text):
+    '''Returns all matched mentions in text
+    a mention starts with @ then a username follows
+    Returns only username'''
+    import re
+    username_regex = r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))@([A-Za-z]+[A-Za-z0-9-_]+)"
+    matches = re.findall(username_regex, text)
+    return [m.strip('@') for m in matches if m is not None]
+
 def compute_sparse_matrix_of_followers(follower_dict):
     '''Computes a scipy sparse matrix for follower dict with as many rows as there are keys in follower_dict (indicating the number of users)
        and as many columns as there are unique followers in the values of follower_dict.
