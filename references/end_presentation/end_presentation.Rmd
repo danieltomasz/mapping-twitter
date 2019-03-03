@@ -10,7 +10,7 @@ institute:
 output: binb::metropolis
 fontsize: 12pt
 ---
-##    Ego-Network Analysis
+##    Two days is not enough for ...
 
 -   Data Mining 
 
@@ -27,7 +27,7 @@ fontsize: 12pt
 -  Getting access to Twittet developer account
 -  scrapping the twitter with *twitterscraper*
 
-## Twitter ego-networks
+## Twitter follewers  as directed ego-networks
 \begin{center}\includegraphics[height=\textheight]{images/Ego_network.png}\end{center}
 
 
