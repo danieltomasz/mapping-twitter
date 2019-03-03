@@ -5,11 +5,17 @@ fields_to_keep = ['text', 'user', 'timestamp']
 def get_interesting_parts(tweet):
     return {field: cont for field, cont in tweet.items() if field in fields_to_keep}
 
-def format_tweets(json_file):
+def add_username(tweet, username):
+    tweet['account'] = username
+    return tweet
+
+def format_tweets(json_file, guessed_user=None):
     '''Formats tweets from json_file into list that can be further used'''
     with open(json_file, 'r') as fl:
         content = json.load(fl)
-    filtered_content = [get_interesting_parts(tweet) for tweet in content]
+    if guessed_user is None:
+        guessed_user = json_file.split('_')[-1].split('.')[0]
+    filtered_content = [add_username(get_interesting_parts(tweet), guessed_user) for tweet in content]
     return filtered_content
 
 def parse_mentions(text):
