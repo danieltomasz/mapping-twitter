@@ -1,0 +1,29 @@
+---
+title: Are you on twitter ?
+subtitle: What we learned from the project
+author:  "Natalia Bielczyk, Moritz Boos, Daniel Borek, Olgierd Borowiecki, Mykola Melnyk"
+date: \today
+institute:  Brainhack Warsaw
+output: binb::metropolis
+fontsize: 12pt
+---
+##    Ego-Network Analysis
+
+-   Data Mining 
+
+-  Network Modelling 
+
+-  Community Detection 
+
+-  Observations and Analysis
+
+
+## Data Mining 
+
+-  Learning version control & setup of the environment (Python with Tweepy, R with rtweet)
+-  Getting access to Twittet developer account
+-  scrapping the twitter with 
+
+# Twitter ego-networks
+
+Twitter Ego-Netwo
