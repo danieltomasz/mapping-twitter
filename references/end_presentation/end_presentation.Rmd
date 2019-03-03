@@ -1,6 +1,6 @@
 ---
 title: Are you on twitter ?
-subtitle: How to analyze scientist online activity
+subtitle: How to analyze scientists online activity
 author:  | 
    | Natalia Bielczyk, Moritz Boos,
    | Daniel Borek, Olgierd Borowiecki,
@@ -36,6 +36,7 @@ fontsize: 12pt
 * Within & outside Community Flow
 * Generators and propagators identyfications
 * Topic-Tweet Profiles
+* Many others possibilities...
 
 ## Brainhack is about learning
 
