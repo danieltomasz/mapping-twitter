@@ -1,0 +1,187 @@
+---
+title: "Twitter"
+author: "Daniel Borek"
+date: "3-3-2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lets try tidyverse!
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
+library(tidyverse)
+library(rtweet)
+library(igraph)
+library(ggraph)
+```
+## Create token
+
+```{r}
+library(httpuv)
+httr::set_config(httr::config(http_version = 0))
+token <- create_token(
+  app = "tweetyPobrania",
+  consumer_key = "157DdK9ud4pcPXcj32KxfKI4U",
+  consumer_secret = "0EOOCJtDwd6GjYzpL3McVYtc27rkLGVxiT8DMfq6ve6ONUX6Ha" )
+saveRDS(token, "~/.rtweet.rds")
+```
+
+
+
+## Lets grab brainhack tweets
+
+
+
+
+
+```{r}
+rstats_sample <- search_tweets("#brainhack", n = 1000, include_rts = FALSE)
+rstats_sample %>% select(name, text) %>% sample_n(10)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+top_retweets <- rstats_sample %>% 
+  group_by(name) %>% 
+  tally(retweet_count, sort=TRUE)
+top_retweets
+```
+```{r}
+rstats_sample %>% 
+  arrange(desc(retweet_count)) %>% 
+  select(retweet_count, name, text)
+```
+```{r}
+rstats <- search_tweets("#rstats", n=4000)
+save(rstats,file="rstats.Rda")
+
+```
+```{r}
+load("rstats.Rda")
+
+rt_g <- filter(rstats, retweet_count > 0) %>% 
+  select(screen_name, mentions_screen_name) %>%
+  unnest(mentions_screen_name) %>% 
+  filter(!is.na(mentions_screen_name)) %>% 
+  graph_from_data_frame()
+
+V(rt_g)$node_label <- unname(ifelse(degree(rt_g)[V(rt_g)] > 20, names(V(rt_g)), "")) 
+V(rt_g)$node_size <- unname(ifelse(degree(rt_g)[V(rt_g)] > 20, degree(rt_g), 0)) 
+```
+
+
+```{r}
+
+ggraph(rt_g, layout = 'linear', circular = TRUE) + 
+  geom_edge_arc(edge_width=0.125, aes(alpha=..index..)) +
+  geom_node_label(aes(label=node_label, size=node_size),
+                  label.size=0, fill="#ffffff66", segment.colour="slateblue",
+                  color="red", repel=TRUE, fontface="bold") +
+  coord_fixed() +
+  scale_size_area(trans="sqrt") +
+  labs(title="Retweet Relationships", subtitle="Most retweeted screen names labeled. Darkers edges == more retweets. Node size == larger degree") +
+  theme_graph() +
+  theme(legend.position="none")
+```
+## Downloading the data
+
+
+```{bash}
+#!/bin/bash
+
+dates=(2006-01-01 2007-01-01 2008-01-01 2009-01-01 2010-01-01 2011-01-01 \
+       2012-01-01 2013-01-01 2014-01-01 2015-01-01 2016-01-01 2017-01-01 \
+       201901-01 2019-01-01)
+       
+for i in {0..12}
+do
+  FILENAME="$(echo brainhack_tweets_${dates[$i]}| cut -d'-' -f 1).csv"
+  twitterscraper '#brainhack' --begindate=${dates[$i]} --enddate=${dates[$i+1]} \
+  --output=/home/daniel/Projekt/data/$FILENAME --csv --poolsize=50
+done
+```
+
+```{bash}
+#!/bin/bash
+
+dates=(2006-01-01 2007-01-01 2008-01-01 2009-01-01 2010-01-01 2011-01-01 \
+       2012-01-01 2013-01-01 2014-01-01 2015-01-01 2016-01-01 2017-01-01 \
+       2018-01-01 2019-01-01)
+       
+for i in {0..12}
+do
+  FILENAME="$(echo brainhack_tweets_${dates[$i]}| cut -d'-' -f 1).csv"
+  twitterscraper '#brainhack' --begindate=${dates[$i]} --enddate=${dates[$i+1]} \
+  --output=/home/daniel/Projekt/data/$FILENAME --csv --poolsize=50
+done
+```
+
+```{bash}
+#!/bin/bash
+
+dates=(2006-01-01 2007-01-01 2008-01-01 2009-01-01 2010-01-01 2011-01-01 \
+       2012-01-01 2013-01-01 2014-01-01 2015-01-01 2016-01-01 2017-01-01 \
+       2018-01-01 2019-01-01)
+       
+hashtags='reproducibility hackathon OHBM2018 OHBM2017  OHBM2016 OHBM2015 OHBM2014 OHBM2013 OHBM2012
+          OHBM openscience OHBM_Trainees EEG fMRI  MEG ohbm preprints commpsych  
+          neuroscience replication  psychology neuropsychology replicationcrisis OpenResearch 
+          PsySci'
+
+for ht in $hashtags
+do
+  for i in {0..12}
+  do
+    FILENAME="$(echo ${ht}_tweets_${dates[$i]}| cut -d'-' -f 1).csv"
+    SEARCH="#$(echo ${ht})"
+    twitterscraper $SEARCH --begindate=${dates[$i]} --enddate=${dates[$i+1]} \
+    --output=/home/daniel/Projekt/data/$FILENAME --csv --poolsize=50
+  done
+done
+```
+
+```{r}
+library(tidyverse)
+file_names <- list.files("/home/daniel/Projekt/data", full.names = TRUE)
+tweet_files <- vector(mode = "list", length = length(file_names))
+for (i in seq_along(file_names)) {
+  tweet_files[[i]] <- read_csv(file_names[i])
+}
+tweets_raw <- bind_rows(tweet_files)
+tweets_raw %>% select(fullname, text)
+```
+
+```{r}
+tweets <- tweets_raw %>% select(-html) %>% distinct
+pct_unique <- ( nrow(tweets) / nrow(tweets_raw) ) * 100
+glue::glue("There are {nrow(tweets)} unique tweets out of \\
+           {nrow(tweets_raw)} total ({round(pct_unique,2)}% unique).")
+```
+
+```{r}
+library(tidytext)
+tweet_hashtags <- tweets %>% 
+  unnest_tokens(word, text, "tweets", strip_punct=TRUE) %>% 
+  filter(str_detect(word, "^#")) %>% 
+  count(word, sort = TRUE)
+tweet_hashtags
+```
+
+```{r}
+library(tidytext)
+mention_edges <- tweets %>% 
+  select(user, text) %>% 
+  unnest_tokens("words", "text", "tweets") %>% 
+  filter(str_detect(words, "^@")) %>% 
+  mutate(from_name = user,
+         to_name = str_remove(words, "@"),
+         type = "mention") %>% 
+  count(from_name, to_name, type)
+```
+
