@@ -19,6 +19,11 @@ Visualization.ipynb in code/ invokes a simple scatter plot based on the number o
 It uses [Uniform Manifold Approximation and Projection](https://github.com/lmcinnes/umap) for dimensionality reduction.
 You can play with the parameters and see what they do.
 
+# RESULTS
+## How often do Brainhackers retweet each other?
+
+One expemplary visualization of the communication structure of the Brainhack Twitter network is [here](https://plot.ly/~mboos/2).
+
 ## Example jupyter notebook
 
 * https://github.com/mikhailklassen/Mining-the-Social-Web-3rd-Edition
