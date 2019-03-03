@@ -20,10 +20,19 @@ fontsize: 12pt
 
 ## Data Mining 
 
--  Learning version control & setup of the environment (Python with Tweepy, R with rtweet)
+-  Learning version control & setup of the environment (*Python* with *Tweepy*, *R* with *rtweet*)
 -  Getting access to Twittet developer account
--  scrapping the twitter with 
+-  scrapping the twitter with *twitterscraper*
 
 # Twitter ego-networks
 
-Twitter Ego-Netwo
+## What we still want to do 
+* Community detection using hashtag for #reproducibility and  #replicationcrisis
+* Within & outside Community Flow
+* Generators and propagators identyfications
+* Topic-Tweet Profiles
+
+## Brainhack is about learning
+
+* Starting the project in different environments is not easy
+* Teamwork matters!

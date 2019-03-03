@@ -1,5 +1,5 @@
 ---
-author: Daniel Borek
+author: "Natalia Bielczyk, Moritz Boos, Daniel Borek, Olgierd Borowiecki, Mykola Melnyk"
 address: '@danieltomasz'
 title:  Are you on twitter ?
 subtitle: Psychology as  a discipline seen through scientists online activity
@@ -9,43 +9,33 @@ output: binb::presento
 
 
 
-____
 
-\tikz[overlay,remember picture] \node[opacity=0.8, at=(current page.center)]{%
-  \includegraphics[height=\textheight]{images/WhyAcademicsUseTwitter.png}};
-\begin{textblock}{0}(5,3.5)
-  {\color{colorblue}\largetext{\textbf{PROCRASTINATION?}}}
-\end{textblock}
+##    Ego-Network Analysis
 
-##  
+-   Data Mining 
 
-- \begin{center}\largetext{The publication \underline{lifecycle}}\end{center}    \bigskip
+-  Network Modelling 
 
--  \montserratfont \textsc{Idea}	\bigskip
--  \notosansfont  \textsc{Discussion} & \textsc{collaboration}		\bigskip
--  \latolightfont Experimentation & data analysis         \bigskip
--  \inconsolatafont Publication         \bigskip
--  \textsc{Dissemination} & \textsc{outreach}    \bigskip
+-  Community Detection 
+
+-  Observations and Analysis
 
 
-## twitter as academic network
+## Data Mining 
 
-\begin{center}\includegraphics[height=0.3\textheight]{images/twitter.png}\end{center}
-*  follow others (& be followed back) 	\bigskip 
-*  engage in conversations 	\bigskip
-*  ask questions	\bigskip
-*  have fun!	
- 
+-  Learning version control & setup of the environment (*Python* with *Tweepy*, *R* with *rtweet*)
+-  Getting access to Twittet developer account
+-  scrapping the twitter with *twitterscraper*
 
+# Twitter ego-networks
 
-## Our project during brainhack 
-* Analyze and visualize network of  followers
-* \inconsolatafont (Python, R, Gephi..) \bigskip
-* \normalfont Followers to citation ration  \bigskip
-*  create and play  with datasets of scientific tweets \bigskip
+## What we still want to do 
+* Community detection using hashtag for #reproducibility and  #replicationcrisis
+* Within & outside Community Flow
+* Generators and propagators identyfications
+* Topic-Tweet Profiles
 
+## Brainhack is about learning
 
-## Twitter datasets 
-*  Example: The Higgs tweets dataset: how the info of  \underline{discovery spread}\bigskip
-*  Idea: building datasets describing how debates about \montserratfont \underline{open science movement} \normalfont and  \montserratfont \underline{reproducibility crisis} \normalfont are represented on Twitter\bigskip
-*  Limited access to Twitter API, but we will  hack it :) 
+* Starting the project in different environments is not easy
+* Teamwork matters!
