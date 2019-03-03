@@ -1,12 +1,15 @@
 ---
-title: Are you on twitter ?
-subtitle: What we learned from the project
-author:  "Natalia Bielczyk, Moritz Boos, Daniel Borek, Olgierd Borowiecki, Mykola Melnyk"
+author: "Natalia Bielczyk, Moritz Boos, Daniel Borek, Olgierd Borowiecki, Mykola Melnyk"
+address: '@danieltomasz'
+title:  Are you on twitter ?
+subtitle: Psychology as  a discipline seen through scientists online activity
 date: \today
-institute:  Brainhack Warsaw
-output: binb::metropolis
-fontsize: 12pt
+output: binb::presento
 ---
+
+
+
+
 ##    Ego-Network Analysis
 
 -   Data Mining 

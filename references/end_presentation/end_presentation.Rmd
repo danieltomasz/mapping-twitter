@@ -1,15 +1,15 @@
 ---
-author: "Natalia Bielczyk, Moritz Boos, Daniel Borek, Olgierd Borowiecki, Mykola Melnyk"
-address: '@danieltomasz'
-title:  Are you on twitter ?
-subtitle: Psychology as  a discipline seen through scientists online activity
-date: \today
-output: binb::presento
+title: Are you on twitter ?
+subtitle: Exploring twitter ego-networks
+author:  | 
+   | Natalia Bielczyk, Moritz Boos,
+   | Daniel Borek, Olgierd Borowiecki,
+   | Mykola Melnyk
+date: 
+institute:  
+output: binb::metropolis
+fontsize: 12pt
 ---
-
-
-
-
 ##    Ego-Network Analysis
 
 -   Data Mining 
@@ -27,7 +27,9 @@ output: binb::presento
 -  Getting access to Twittet developer account
 -  scrapping the twitter with *twitterscraper*
 
-# Twitter ego-networks
+## Twitter ego-networks
+\begin{center}\includegraphics[height=\textheight]{images/Ego_network.png}\end{center}
+
 
 ## What we still want to do 
 * Community detection using hashtag for #reproducibility and  #replicationcrisis
@@ -38,4 +40,5 @@ output: binb::presento
 ## Brainhack is about learning
 
 * Starting the project in different environments is not easy
+* Getting data is the most difficult part
 * Teamwork matters!
