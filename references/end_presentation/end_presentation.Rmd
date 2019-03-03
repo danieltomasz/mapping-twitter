@@ -1,6 +1,6 @@
 ---
 title: Are you on twitter ?
-subtitle: Exploring twitter ego-networks
+subtitle: How to analyze scientist online activity
 author:  | 
    | Natalia Bielczyk, Moritz Boos,
    | Daniel Borek, Olgierd Borowiecki,
